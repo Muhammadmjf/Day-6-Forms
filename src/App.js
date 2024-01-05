@@ -1,23 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { Formik, Field, Form } from "formik";
 
 function App() {
+  const init = {
+    username: "Muhammad",
+    password: "12345",
+  };
+
+  function text(value) {
+    console.log(value);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      className="App"
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}
+    >
+      <Formik initialValues={init} onsubmit={text}>
+        <Form>
+          <div>
+            <Field name="username" />
+          </div>
+          <div>
+            <Field name="password" />
+          </div>
+          <button> Login </button>
+        </Form>
+      </Formik>
     </div>
   );
 }
